@@ -17,3 +17,6 @@ if __name__ == '__main__':
 
 def get_summ(a, b):
     return a + b
+
+def get_sub(a, b):
+    return a - b
