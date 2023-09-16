@@ -20,3 +20,4 @@ def get_summ(a, b):
 
 def get_sub(a, b):
     return a - b
+
