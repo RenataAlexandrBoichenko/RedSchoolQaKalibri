@@ -4,7 +4,7 @@ import time
 
 driver = webdriver.Chrome()
 
-def test_add_from_catalog():
+def test_continue_shopping():
     driver.get("https://www.saucedemo.com/")
 
     username_field = driver.find_element(By.XPATH, '//input[@data-test="username"]')
@@ -21,10 +21,12 @@ def test_add_from_catalog():
     add_to_card_button = driver.find_element(By.XPATH, '//button[@data-test="add-to-cart-sauce-labs-backpack"]')
     add_to_card_button.click()
 
-    basket_button = driver.find_element(By.XPATH, '//select[@data-test="product_sort_container"]')
+    basket_button = driver.find_element(By.CSS_SELECTOR, '#shopping_cart_container')
     basket_button.click()
 
-    text_name_card_after = driver.find_element(By.CSS_SELECTOR, 'a[id="item_0_title_link"] > div[class="inventory_item_name"]').text
+    checkout_button = driver.find_element(By.XPATH, '//button[@data-test="continue-shopping"]')
+    checkout_button.click()
 
-    assert text_name_card_before == text_name_card_after
+    continue_shopping = driver.find_element(By.CSS_SELECTOR, '#page_wrapper')
+    assert continue_shopping
 
