@@ -1,0 +1,3 @@
+[pytest]
+addopts = --cov-report=html --cov=<path> --flake8
+testpath = <test_paths>
