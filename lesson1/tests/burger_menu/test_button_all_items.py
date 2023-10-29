@@ -1,9 +1,10 @@
 from selenium.webdriver.common.by import By
+from data import MAIN_PAGE
 import time
 
 
 def test_login_form(driver, login_form):
-    driver.get("https://www.saucedemo.com/")
+    url = MAIN_PAGE
 
     burger_menu = driver.find_element(By.ID, 'react-burger-menu-btn')
     burger_menu.click()
@@ -17,4 +18,5 @@ def test_login_form(driver, login_form):
     page = driver.find_element(By.CSS_SELECTOR,'#inventory_container')
     assert page
 
+    driver.quit()
 

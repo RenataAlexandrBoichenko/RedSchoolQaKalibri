@@ -1,26 +1,26 @@
 from selenium.webdriver.common.by import By
+import time
+from data import MAIN_PAGE
 
 
 def test_dell_order(driver, login_form):
-    driver.get("https://www.saucedemo.com/")
+    url = MAIN_PAGE
 
-    text_name_card_before = driver.find_element(By.CSS_SELECTOR,
-                                                'a[id="item_0_title_link"] > div[class="inventory_item_name"]').text
-
-    add_to_card_button = driver.find_element(By.CSS_SELECTOR, '#add-to-cart-sauce-labs-bike-light')
+    add_to_card_button = driver.find_element(By.CSS_SELECTOR, '#add-to-cart-sauce-labs-bolt-t-shirt')
     add_to_card_button.click()
+    time.sleep(3)
 
-    basket_button = driver.find_element(By.CSS_SELECTOR, '#shopping_cart_container')
+    basket_button = driver.find_element(By.XPATH, '//div[@id="shopping_cart_container"]')
     basket_button.click()
-
-    text_name_card_after = driver.find_element(By.CSS_SELECTOR,
-                                               'a[id="item_0_title_link"] > div[class="inventory_item_name"]').text
+    time.sleep(2)
 
     continue_button = driver.find_element(By.CSS_SELECTOR, '#continue-shopping')
     continue_button.click()
+    time.sleep(2)
 
-    dell_from_card_button = driver.find_element(By.CSS_SELECTOR, '#remove-sauce-labs-bike-light')
+    dell_from_card_button = driver.find_element(By.CSS_SELECTOR, '#remove-sauce-labs-bolt-t-shirt')
     dell_from_card_button.click()
+    time.sleep(2)
 
     page = driver.find_element(By.CSS_SELECTOR, '#add-to-cart-sauce-labs-bike-light')
     assert page

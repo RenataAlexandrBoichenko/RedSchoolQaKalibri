@@ -1,9 +1,10 @@
 from selenium.webdriver.common.by import By
 import time
+from data import MAIN_PAGE
 
 
 def test_logout(driver, login_form):
-    driver.get("https://www.saucedemo.com/")
+    url = MAIN_PAGE
 
     burger_menu = driver.find_element(By.ID, 'react-burger-menu-btn')
     burger_menu.click()
@@ -15,3 +16,5 @@ def test_logout(driver, login_form):
 
     form_login = driver.find_element(By.CSS_SELECTOR, 'div[class="form_group"]')
     assert form_login
+
+    driver.quit()

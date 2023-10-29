@@ -1,32 +1,32 @@
 from selenium.webdriver.common.by import By
 import time
+from data import MAIN_PAGE
 
 
 def test_del_order(driver, login_form):
-    driver.get("https://www.saucedemo.com/")
+    url = MAIN_PAGE
 
-    name_card = driver.find_element(By.CSS_SELECTOR, 'button[id="add-to-cart-test.allthethings()-t-shirt-(red)"]')
+    name_card = driver.find_element(By.CSS_SELECTOR, '#item_3_title_link')
     name_card.click()
+
+    add_to_card_button = driver.find_element(By.XPATH, '//button[@id="add-to-cart-test.allthethings()-t-shirt-(red)"]')
+    add_to_card_button.click()
+    time.sleep(5)
 
     basket_button = driver.find_element(By.CSS_SELECTOR, '#shopping_cart_container')
     basket_button.click()
+    time.sleep(5)
 
-    text_name_card = driver.find_element(By.CSS_SELECTOR, '#item_3_title_link').text
+    remove_button = driver.find_element(By.XPATH, '//button[@id="remove-test.allthethings()-t-shirt-(red)"]')
+    remove_button.click()
+    time.sleep(5)
 
     continue_button = driver.find_element(By.CSS_SELECTOR, '#continue-shopping')
     continue_button.click()
+    time.sleep(5)
 
-    time.sleep(3)
-
-    name_card = driver.find_element(By.CSS_SELECTOR, 'a[id="item_3_title_link"] > div[class="inventory_item_name"]')
+    name_card = driver.find_element(By.CSS_SELECTOR, '#item_3_title_link')
     name_card.click()
 
-    time.sleep(3)
-
-    dell_from_card_button = driver.find_element(By.CSS_SELECTOR, 'button[id="remove-test.allthethings()-t-shirt-(red)"]')
-    dell_from_card_button.click()
-
-    time.sleep(3)
-
-    page = driver.find_element(By.CSS_SELECTOR, 'button[id="add-to-cart-test.allthethings()-t-shirt-(red)"]')
-    assert page
+    add_to_card_button = driver.find_element(By.XPATH, '//button[@id="add-to-cart-test.allthethings()-t-shirt-(red)"]')
+    assert add_to_card_button
