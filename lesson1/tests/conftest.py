@@ -7,6 +7,7 @@ from data import LOGIN, PASSWORD, MAIN_PAGE
 from selenium.webdriver.common.by import By
 import time
 
+
 @pytest.fixture()
 def driver():
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))

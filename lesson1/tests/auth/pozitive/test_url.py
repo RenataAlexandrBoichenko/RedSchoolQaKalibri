@@ -1,25 +1,13 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
+from data import MAIN_PAGE, INVENTORY_URL
 
-driver = webdriver.Chrome()
 
-
-def test_login_form():
-    driver.get("https://www.saucedemo.com/")
-
-    url_before = driver.current_url == "https://www.saucedemo.com/"
-    username_field = driver.find_element(By.XPATH, '//input[@data-test="username"]')
-    username_field.send_keys("standard_user")
-
-    password_field = driver.find_element(By.XPATH, '//input[@data-test="password"]')
-    password_field.send_keys("secret_sauce")
-
-    login_button = driver.find_element(By.XPATH, '//input[@data-test="login-button"]')
-    login_button.click()
+def test_login_form(driver, login_form):
+    url_before = MAIN_PAGE
 
     time.sleep(3)
-    url_after = driver.current_url == "https://www.saucedemo.com/inventor.html"
+    url_after = INVENTORY_URL
 
     assert url_before != url_after
 

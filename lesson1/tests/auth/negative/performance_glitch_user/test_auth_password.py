@@ -1,22 +1,21 @@
-from selenium import webdriver
-from selenium import By
+from selenium.webdriver.common.by import By
 import time
+from data import MAIN_PAGE, LOGIN
+from locators import LOGIN_BUTTON, USERNAME_FIELD
 
-driver = webdriver.Chrome()
 
-def test_login_form():
-    driver.get("https://www.saucedemo.com/")
+def test_login_form(driver):
+    driver.get(MAIN_PAGE)
 
-    username_field = driver.find_element(By.XPATH, '//input[@data-test="username"]')
-    username_field.send_keys("performance_glitch_user")  # it's username
+    driver.find_element(By.ID, USERNAME_FIELD).send_keys(LOGIN)
 
     password_field = driver.find_element(By.XPATH, '//input[@data-test="password"]')
-    password_field.send_keys("secretsauce")  # it's password
+    password_field.send_keys("scretsauce")
 
-    login_button = driver.find_element(By.XPATH, '//input[@data-test="login-button"]')
-    login_button.click()
+    driver.find_element(By.ID, LOGIN_BUTTON).click()
+    time.sleep(3)
 
-    time.sleep(5)
-    assert driver.current_url == "https://www.saucedemo.com/inventory.html"
+    error = driver.find_element(By.XPATH, '//div[ @class ="error-message-container error"]')
+    assert error
 
     driver.quit()
