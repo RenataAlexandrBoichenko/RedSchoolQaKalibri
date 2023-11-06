@@ -1,10 +1,5 @@
-Когда
-вызывается
-функция
-slow_function, декоратор
-timing_decorator
-измеряет
-время,
+# Когда вызывается функция slow_function,
+# декоратор timing_decorator измеряет время,
 # которое ушло на её выполнение, и выводит это время в консоль
 import functools
 from time import time, sleep
@@ -45,5 +40,5 @@ def slow_function(duration):
     return duration
 
 
-if name == "main":
+if __name__ == '__main__':
     slow_function(1)
